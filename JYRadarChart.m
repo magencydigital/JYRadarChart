@@ -19,7 +19,6 @@
 
 @property (nonatomic, assign) NSUInteger numOfV;
 @property (nonatomic, strong) JYLegendView *legendView;
-@property (nonatomic, strong) UIFont *scaleFont;
 
 @end
 
@@ -54,7 +53,14 @@
     _minValue = 0;
     _colorOpacity = 1.0;
     _backgroundLineColorRadial = [UIColor darkGrayColor];
+    _backgroundLineColorStep = [UIColor lightGrayColor];
     _backgroundFillColor = [UIColor whiteColor];
+    _textColor = [UIColor blackColor];
+    _textColorHighlighted = _textColor;
+    _stepTextColor = [UIColor blackColor];
+    _backgroundTextColor = [UIColor clearColor];
+    _backgroundTextColorHighlighted = _backgroundTextColor;
+    _itemHighlighted = @[];
 
     _legendView = [[JYLegendView alloc] init];
     _legendView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
@@ -128,17 +134,40 @@
 	//draw attribute text
 	CGFloat height = [self.scaleFont lineHeight];
 	CGFloat padding = 2.0;
+    CGFloat marginRadius = 5.0;
+    BOOL itemIsHighlighted;
 	for (int i = 0; i < _numOfV; i++) {
-		NSString *attributeName = _attributes[i];
-		CGPoint pointOnEdge = CGPointMake(_centerPoint.x - _r * sin(i * radPerV), _centerPoint.y - _r * cos(i * radPerV));
+        
+        itemIsHighlighted = [_itemHighlighted containsObject:@(i)];
+        
+        NSString *attributeName = _attributes[i];
+		CGPoint pointOnEdge = CGPointMake(_centerPoint.x - (_r + marginRadius) * sin(i * radPerV), _centerPoint.y - (_r + marginRadius) * cos(i * radPerV));
         
 		CGSize attributeTextSize = JY_TEXT_SIZE(attributeName, self.scaleFont);
 		NSInteger width = attributeTextSize.width;
+        if( width < height ) width = height; // allow to have a circle if you
         
 		CGFloat xOffset = pointOnEdge.x >= _centerPoint.x ? width / 2.0 + padding : -width / 2.0 - padding;
 		CGFloat yOffset = pointOnEdge.y >= _centerPoint.y ? height / 2.0 + padding : -height / 2.0 - padding;
 		CGPoint legendCenter = CGPointMake(pointOnEdge.x + xOffset, pointOnEdge.y + yOffset);
-
+        
+        UIColor *bgTextColor = itemIsHighlighted? _backgroundTextColorHighlighted : _backgroundTextColor;
+        if( bgTextColor != [UIColor clearColor] ) {
+            CGFloat rectOffsetX = 4.;
+            CGFloat rectOffsetY = 4.;
+            CGRect rectText = CGRectMake(legendCenter.x - width / 2.0 - rectOffsetX,
+                                         legendCenter.y - height / 2.0 - rectOffsetY,
+                                         width + rectOffsetX * 2,
+                                         height + rectOffsetY * 2);
+            
+            UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:rectText cornerRadius:height * .5];
+            CGContextSetFillColorWithColor(context, bgTextColor.CGColor);
+            [bezierPath fill];
+        }
+        
+        
+        UIColor *txtColor = itemIsHighlighted? _textColorHighlighted : _textColor;
+        [txtColor setFill];
         if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 70000) {
             NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
             [paragraphStyle setLineBreakMode:NSLineBreakByClipping];
@@ -175,8 +204,7 @@
 
 	//draw steps line
 	//static CGFloat dashedPattern[] = {3,3};
-	//TODO: make this color a variable
-	[[UIColor lightGrayColor] setStroke];
+    [_backgroundLineColorStep setStroke];
 	CGContextSaveGState(context);
 	for (int step = 1; step <= _steps; step++) {
 		for (int i = 0; i <= _numOfV; ++i) {
@@ -252,11 +280,18 @@
     
 	if (self.showStepText) {
 		//draw step label text, alone y axis
-		//TODO: make this color a variable
-		[[UIColor blackColor] setFill];
+        [_stepTextColor setFill];
 		for (int step = 0; step <= _steps; step++) {
 			CGFloat value = _minValue + (_maxValue - _minValue) * step / _steps;
 			NSString *currentLabel = [NSString stringWithFormat:@"%.0f", value];
+//            CGRect rectText = CGRectMake(_centerPoint.x + 3,
+//                                         _centerPoint.y - _r * step / _steps - 3,
+//                                         20,
+//                                         10);
+//            [[UIColor blueColor] setFill];
+//            CGContextFillEllipseInRect(context, rectText);
+//            [_stepTextColor setFill];
+//            JY_DRAW_TEXT_IN_RECT(currentLabel, rectText, self.scaleFont);
 			JY_DRAW_TEXT_IN_RECT(currentLabel,
 			                     CGRectMake(_centerPoint.x + 3,
 			                                _centerPoint.y - _r * step / _steps - 3,

@@ -17,22 +17,9 @@
 		A46480F71822B03600FC04A7 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A46480F51822B03600FC04A7 /* Main_iPad.storyboard */; };
 		A46480FA1822B03600FC04A7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A46480F91822B03600FC04A7 /* ViewController.m */; };
 		A46480FC1822B03600FC04A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A46480FB1822B03600FC04A7 /* Images.xcassets */; };
-		A46481031822B03600FC04A7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46481021822B03600FC04A7 /* XCTest.framework */; };
-		A46481041822B03600FC04A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46480E01822B03600FC04A7 /* Foundation.framework */; };
-		A46481051822B03600FC04A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46480E41822B03600FC04A7 /* UIKit.framework */; };
 		A464812F18238F6800FC04A7 /* JYLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A464812C18238F6800FC04A7 /* JYLegendView.m */; };
 		A464813018238F6800FC04A7 /* JYRadarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = A464812E18238F6800FC04A7 /* JYRadarChart.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A46481061822B03600FC04A7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A46480D51822B03600FC04A7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A46480DC1822B03600FC04A7;
-			remoteInfo = JYRadarChartDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A46480DD1822B03600FC04A7 /* JYRadarChartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JYRadarChartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +37,6 @@
 		A46480F81822B03600FC04A7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A46480F91822B03600FC04A7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A46480FB1822B03600FC04A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A46481011822B03600FC04A7 /* JYRadarChartDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JYRadarChartDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A46481021822B03600FC04A7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A464812B18238F6800FC04A7 /* JYLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYLegendView.h; sourceTree = SOURCE_ROOT; };
 		A464812C18238F6800FC04A7 /* JYLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYLegendView.m; sourceTree = SOURCE_ROOT; };
@@ -66,16 +52,6 @@
 				A46480E31822B03600FC04A7 /* CoreGraphics.framework in Frameworks */,
 				A46480E51822B03600FC04A7 /* UIKit.framework in Frameworks */,
 				A46480E11822B03600FC04A7 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A46480FE1822B03600FC04A7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A46481031822B03600FC04A7 /* XCTest.framework in Frameworks */,
-				A46481051822B03600FC04A7 /* UIKit.framework in Frameworks */,
-				A46481041822B03600FC04A7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				A46480DD1822B03600FC04A7 /* JYRadarChartDemo.app */,
-				A46481011822B03600FC04A7 /* JYRadarChartDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,24 +144,6 @@
 			productReference = A46480DD1822B03600FC04A7 /* JYRadarChartDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A46481001822B03600FC04A7 /* JYRadarChartDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A46481151822B03600FC04A7 /* Build configuration list for PBXNativeTarget "JYRadarChartDemoTests" */;
-			buildPhases = (
-				A46480FD1822B03600FC04A7 /* Sources */,
-				A46480FE1822B03600FC04A7 /* Frameworks */,
-				A46480FF1822B03600FC04A7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A46481071822B03600FC04A7 /* PBXTargetDependency */,
-			);
-			name = JYRadarChartDemoTests;
-			productName = JYRadarChartDemoTests;
-			productReference = A46481011822B03600FC04A7 /* JYRadarChartDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -195,11 +152,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = wcode;
-				TargetAttributes = {
-					A46481001822B03600FC04A7 = {
-						TestTargetID = A46480DC1822B03600FC04A7;
-					};
-				};
 			};
 			buildConfigurationList = A46480D81822B03600FC04A7 /* Build configuration list for PBXProject "JYRadarChartDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -215,7 +167,6 @@
 			projectRoot = "";
 			targets = (
 				A46480DC1822B03600FC04A7 /* JYRadarChartDemo */,
-				A46481001822B03600FC04A7 /* JYRadarChartDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -229,13 +180,6 @@
 				A46480FC1822B03600FC04A7 /* Images.xcassets in Resources */,
 				A46480F41822B03600FC04A7 /* Main_iPhone.storyboard in Resources */,
 				A46480EB1822B03600FC04A7 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A46480FF1822B03600FC04A7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,22 +198,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A46480FD1822B03600FC04A7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A46481071822B03600FC04A7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A46480DC1822B03600FC04A7 /* JYRadarChartDemo */;
-			targetProxy = A46481061822B03600FC04A7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A46480E91822B03600FC04A7 /* InfoPlist.strings */ = {
@@ -401,48 +330,6 @@
 			};
 			name = Release;
 		};
-		A46481161822B03600FC04A7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JYRadarChartDemo.app/JYRadarChartDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JYRadarChartDemo/JYRadarChartDemo-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "JYRadarChartDemoTests/JYRadarChartDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		A46481171822B03600FC04A7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JYRadarChartDemo.app/JYRadarChartDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JYRadarChartDemo/JYRadarChartDemo-Prefix.pch";
-				INFOPLIST_FILE = "JYRadarChartDemoTests/JYRadarChartDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -460,15 +347,6 @@
 			buildConfigurations = (
 				A46481131822B03600FC04A7 /* Debug */,
 				A46481141822B03600FC04A7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A46481151822B03600FC04A7 /* Build configuration list for PBXNativeTarget "JYRadarChartDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A46481161822B03600FC04A7 /* Debug */,
-				A46481171822B03600FC04A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

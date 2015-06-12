@@ -20,22 +20,35 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+    
+    float marginX = 10.;
+    float marginY = 40.;
+    CGRect f = CGRectMake(marginX, marginY, self.view.frame.size.width - marginX * 2, self.view.frame.size.height * .5 - marginY * 2);
+	p = [[JYRadarChart alloc] initWithFrame:f];
 
-	p = [[JYRadarChart alloc] initWithFrame:CGRectMake(30, 20, 200, 200)];
-
-	NSArray *a1 = @[@(81), @(97), @(87), @(60), @(65), @(77)];
-	NSArray *a2 = @[@(91), @(87), @(33), @(77), @(78), @(96)];
+    NSArray *a1 = @[@(81), @(97), @(87), @(60), @(65), @(77), @(81), @(97), @(87), @(60), @(65), @(77)];
+    NSArray *a2 = @[@(91), @(87), @(33), @(77), @(78), @(96), @(91), @(87), @(33), @(77), @(78), @(96)];
 	p.dataSeries = @[a1, a2];
 	p.steps = 1;
 	p.showStepText = YES;
 	p.backgroundColor = [UIColor whiteColor];
-	p.r = 60;
+    p.r = f.size.height * .8 * .5;
 	p.minValue = 20;
 	p.maxValue = 120;
 	p.fillArea = YES;
 	p.colorOpacity = 0.7;
     p.backgroundFillColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
-	p.attributes = @[@"Attack", @"Defense", @"Speed", @"HP", @"MP", @"IQ"];
+    p.backgroundLineColorRadial = [UIColor magentaColor];
+    p.backgroundLineColorStep = [UIColor greenColor];
+    p.backgroundTextColor = [[UIColor greenColor] colorWithAlphaComponent:.2];
+    p.backgroundTextColorHighlighted = [[UIColor greenColor] colorWithAlphaComponent:.8];
+    p.itemHighlighted = @[@(1), @(3), @(5), @(7), @(9), @(11)];
+    p.textColor = [UIColor whiteColor];
+    p.textColorHighlighted = p.textColor;
+    p.stepTextColor = [UIColor yellowColor];
+    p.scaleFont = [UIFont fontWithName:@"HelveticaNeue" size:16.];
+	p.attributes = @[@"Attack", @"Defense", @"Speed", @"HP", @"MP", @"IQ", @"1", @"2", @"3", @"4", @"5", @"12"];
 	p.showLegend = YES;
 	[p setTitles:@[@"archer", @"footman"]];
 	[p setColors:@[[UIColor yellowColor], [UIColor purpleColor]]];
@@ -44,10 +57,10 @@
 
 	[NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(updateData) userInfo:nil repeats:YES];
 
-
-
-	p2 = [[JYRadarChart alloc] initWithFrame:CGRectMake(10, 220, 280, 200)];
-	p2.centerPoint = CGPointMake(130, 100);
+    
+    f.origin.y = self.view.frame.size.height * .5 + marginY;
+	p2 = [[JYRadarChart alloc] initWithFrame:f];
+	p2.centerPoint = CGPointMake(f.size.height * .5, f.size.height * .5);
 	p2.showLegend = YES;
     p2.backgroundFillColor = [UIColor whiteColor];
 	[p2 setTitles:@[@"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j"]];
@@ -71,7 +84,7 @@
 }
 
 - (void)updateData {
-	int n = 7;
+    int n = 13;
 	NSMutableArray *a = [NSMutableArray array];
 	NSMutableArray *b = [NSMutableArray array];
 	NSMutableArray *c = [NSMutableArray array];
@@ -88,6 +101,10 @@
 	p.fillArea = arc4random() % 2 ? YES : NO;
 	p.drawPoints = arc4random() % 2 ? YES : NO;
 	p.showStepText = arc4random() % 2 ? YES : NO;
+    NSArray *itemHighlighted;
+    if( arc4random() % 2 ) itemHighlighted = @[@(0), @(2), @(4), @(6), @(8), @(10)];
+    else itemHighlighted = @[@(1), @(3), @(5), @(7), @(9), @(11)];
+    p.itemHighlighted = itemHighlighted;
 	[p setTitles:@[@"iPhone", @"pizza", @"hard drive"]];
 	[p setNeedsDisplay];
 }
