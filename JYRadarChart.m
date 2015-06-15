@@ -174,7 +174,8 @@
             [paragraphStyle setAlignment:NSTextAlignmentCenter];
 
             NSDictionary *attributes = @{ NSFontAttributeName: self.scaleFont,
-                                          NSParagraphStyleAttributeName: paragraphStyle };
+                                          NSParagraphStyleAttributeName: paragraphStyle,
+                                          NSForegroundColorAttributeName: txtColor };
 
             [attributeName drawInRect:CGRectMake(legendCenter.x - width / 2.0,
                                                  legendCenter.y - height / 2.0,
@@ -284,20 +285,13 @@
 		for (int step = 0; step <= _steps; step++) {
 			CGFloat value = _minValue + (_maxValue - _minValue) * step / _steps;
 			NSString *currentLabel = [NSString stringWithFormat:@"%.0f", value];
-//            CGRect rectText = CGRectMake(_centerPoint.x + 3,
-//                                         _centerPoint.y - _r * step / _steps - 3,
-//                                         20,
-//                                         10);
-//            [[UIColor blueColor] setFill];
-//            CGContextFillEllipseInRect(context, rectText);
-//            [_stepTextColor setFill];
-//            JY_DRAW_TEXT_IN_RECT(currentLabel, rectText, self.scaleFont);
 			JY_DRAW_TEXT_IN_RECT(currentLabel,
 			                     CGRectMake(_centerPoint.x + 3,
 			                                _centerPoint.y - _r * step / _steps - 3,
 			                                20,
 			                                10),
-			                     self.scaleFont);
+			                     self.scaleFont,
+                                 _stepTextColor);
 		}
 	}
 }
